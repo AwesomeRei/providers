@@ -3,10 +3,10 @@ package kafkaStreamer
 import (
 	"context"
 	"errors"
+	"github.com/AwesomeRei/providers/pubsub"
+	"github.com/AwesomeRei/providers/pubsub/messages"
 	"github.com/segmentio/kafka-go"
 	"github.com/stretchr/testify/assert"
-	"gitlab.com/AwesomeRei/kraft-producer/provider"
-	"gitlab.com/AwesomeRei/kraft-producer/provider/messages"
 	"testing"
 	"time"
 )
@@ -51,13 +51,13 @@ func TestNewKafkaWriter(t *testing.T) {
 }
 
 func TestSendEvent(t *testing.T) {
-	msg,_ := provider.NewMessageBox("id",messages.ExampleMessage{
+	msg,_ := pubsub.NewMessageBox("id",messages.ExampleMessage{
 		Name: "jaeger", Time: time.Now(), Message: "test",
 	},messages.ExampleMessageType)
 	tests := []struct{
 		name string
 		client KafkaProducer
-		msg provider.MessageBox
+		msg pubsub.MessageBox
 		ctx context.Context
 		topic string
 		error error

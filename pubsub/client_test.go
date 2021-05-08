@@ -2,8 +2,8 @@ package pubsub
 
 import (
 	"errors"
+	"github.com/AwesomeRei/providers/pubsub/messages"
 	"github.com/stretchr/testify/assert"
-	"gitlab.com/AwesomeRei/kraft-producer/provider/messages"
 	"math"
 	"testing"
 	"time"

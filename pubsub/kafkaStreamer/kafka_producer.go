@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/segmentio/kafka-go"
-	"gitlab.com/AwesomeRei/kraft-producer/provider"
-	"gitlab.com/AwesomeRei/kraft-producer/provider/messages"
+	"github.com/AwesomeRei/providers/pubsub"
+	"github.com/AwesomeRei/providers/pubsub/messages"
+	kafka "github.com/segmentio/kafka-go"
 )
 
 type KafkaProducer struct {
@@ -46,7 +46,7 @@ func New(host string,port int, o Options) (*KafkaProducer,error){
 	},nil
 }
 
-func (k *KafkaProducer) SendEvent(ctx context.Context,topic string,msg provider.MessageBox) error {
+func (k *KafkaProducer) SendEvent(ctx context.Context,topic string,msg pubsub.MessageBox) error {
 	b,err := messages.Serialize(msg)
 	if err != nil{
 		return err

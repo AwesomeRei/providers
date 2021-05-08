@@ -2,7 +2,7 @@ package pubsub
 
 import (
 	"errors"
-
+	"github.com/AwesomeRei/providers/pubsub/messages"
 )
 
 type MessageBox struct {
